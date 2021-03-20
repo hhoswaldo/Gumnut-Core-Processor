@@ -9,7 +9,7 @@ module adder (
     /*
     * Add operation -> IA + IB + carry in
     */
-    assign {cout, IS} = IA + IB + cin; 
+    always_comb {cout, IS} = IA + IB + cin; 
 
     // Overflow flag
 	always_comb vout = ((~IA[7] & ~IB[7] & IS[7]) | (IA[7] & IB[7] & ~IS[7])) ? 1 : 0;
