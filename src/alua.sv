@@ -1,7 +1,7 @@
 module alua (
     input   logic   [7:0]   A,      // 8 bit value A input
     input   logic   [7:0]   B,      // 8 bit value B input
-    input   logic   [1:0]   SEL,    // 2 bit input selector
+    input   logic   [1:0]   sel,    // 2 bit input selector
 	input   logic		    cin,    // 1 bit carry in input
     output  logic   [7:0]   out,    // 8 bit result output
     output  logic           vout,   // 1 bit overflow output
@@ -16,7 +16,7 @@ module alua (
     aluext aluext1(
         .A(A), 
         .B(B), 
-        .S(SEL),
+        .S(sel),
 		.cin(cin),
         .OPA(a_e), 
         .OPB(b_e), 
