@@ -1,4 +1,10 @@
 # Gumnut-Core-Processor
+The Gumnut is an 8-bit processor core intended for educational purposes. (A gumnut is
+a small seedpod of an Australian eucalyptus tree. It is something small from which large
+things grow.) The Gumnut is similar to 8-bit microcontrollers for small embedded applications, but has an instruction set architecture more similar to RISC processors. We use it
+as the subject of this case study to show how we might develop high-level models of complex devices such as a CPU. We start by describing the view of the processor as seen by
+the machine language programmer and by the hardware designer interfacing the processor with the rest of a computer system.
+
 ![Gumnut architecture](img/gumnut2_4arch.png)
 ## Processing unit or data path
 The *datapath or processing unit* is the hardware that performs all the required operations, for example, ALU, registers, and internal buses. 
@@ -42,8 +48,29 @@ Our implementations has eight registers of eight bits which can read two values 
 ### Instruction Register
 The instructions register routes the instruction bits according to our [instruction set](img/instruction_set.xlsx). 
 
+## Control Unit
+A control unit (CU) is an integrated circuit in a processor that controls the input and output. It receives instructions from a program, then passes them to the arithmetic logic unit (ALU). The ALU performs the appropriate calculations and sends the resulting values back to the control unit. The control unit sends these values to the corresponding program as output.
 
+Our CPU has six states:
+
+![FSM](img/fsm_cu.jpg)
+
+
+## PC Unit
+Our PC Unit has three main components:
+### Program counter and new program counter
+The program counter loads individual instructions from memory and stores them sequentially. The instruction register decodes these instructions and converts them to commands for the CPU. After each instruction, the CU increments the program counter and fetches the next instruction.
+
+### Interruption register
+After an interruption happens the interruption register store the current program counter and the current flags.
+
+>Inside the img directory is the RTL diagram from the PC Unit.
 
 ## Resources
 https://techterms.com/definition/alu
+
 https://www.cise.ufl.edu/~mssz/CompOrg/CDA-proc.html
+
+https://techterms.com/definition/control_unit
+
+Ashenden, P. J. (2010). The designer's guide to VHDL. Morgan Kaufmann.
